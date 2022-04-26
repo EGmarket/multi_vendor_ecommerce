@@ -1,11 +1,36 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Hi..... {{ Auth::user()->name }}
-        </h2>
-    </x-slot>
+@extends('frontend.main_master')
+@section('content')
+    <div class="body-content">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-2 ">
+                    <br>
+                    <br>
+                    <img class="card-img-top mb-4" style="border-radius: 50%" src="{{ (!empty($editData->profile_photo_path))?
+                                                    url('upload/admin_images/'.$editData->profile_photo_path) :url('upload/no_image.jpg') }}" height="100%" width="100%" alt="">
+                    <br>
+                    <br>
+                    <ul class="list-group list-group-flush">
+                        <a href="" class="btn btn-primary btn-sm btn-block">Home</a>
+                        <a href="" class="btn btn-primary btn-sm btn-block">profile</a>
+                        <a href="" class="btn btn-primary btn-sm btn-block">change password</a>
+                        <a href="" class="btn btn-danger btn-sm btn-block">Logout</a>
 
-    <div class="py-12">
-        <h1>This is the Dashboard</h1>
+                    </ul>
+
+                </div>
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <h3 class="text-center">
+                            <span class="text-danger">Hi....</span>
+                            <strong>{{ Auth::user()->name }} </strong> Welcome to aSquare
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</x-app-layout>
+@endsection
