@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="text-xs-right">
-                                <input type="submit" class="btn btn-danger" value="Update"/>
+                                <input type="submit" class="btn btn-danger" value="Add New"/>
                             </div>
                         </form>
 
