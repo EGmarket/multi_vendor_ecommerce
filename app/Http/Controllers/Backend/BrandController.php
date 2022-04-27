@@ -13,7 +13,11 @@ class BrandController extends Controller
         return view('backend.brand.brand_view',compact('brands'));
     }
 
-    public function BrandStore(){
-
+    public function BrandStore(Request $request){
+        $request->validate([
+            'brand_name_en' => 'required',
+            'brand_name_bn' => 'required',
+            'brand_img' => 'required',
+        ]);
     }
 }

@@ -66,34 +66,41 @@
                         <form action="{{ route('brand.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Brand Name English</label>
-                                <input type="text" class="form-control "   name="brand_name_en">
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                                @enderror
+                                <h5>Brand Name English</h5>
+                                <div class="controls">
+                                    <input type="text" class="form-control "   name="brand_name_en">
+                                    @error('brand_name_en')
+
+                                    <span class="text-danger">{{ $message }}</span>
+
+                                    @enderror
+                                </div>
+
                             </div><div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Brand Name Bangla </label>
-                                <input type="text" class="form-control"  name="brand_name_bn" >
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                                @enderror
+                                <h5>Brand Name Bangla</h5>
+                                <div class="controls">
+                                    <input type="text" class="form-control"  name="brand_name_bn" >
+                                    @error('brand_name_bn')
+
+                                    <span class="text-danger">{{ $message }}</span>
+
+                                    @enderror
+                                </div>
+
                             </div>
                             <div class="form-group">
-                                <label class="info-title" for="exampleInputEmail1">Brand Image </label>
-                                <input type="file" class="form-control "  name="brand_img"  >
-                                @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                                @enderror
+                                <h5>Brand Image</h5>
+                                <div class="controls">
+                                    <input type="file" class="form-control "  name="brand_img"  >
+                                    @error('brand_img')
+                                    <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                             </div>
 
-                            <div class="form-group">
-                                <button class="btn btn-danger">Update</button>
+                            <div class="text-xs-right">
+                                <input type="submit" class="btn btn-danger" value="Update"/>
                             </div>
                         </form>
 
