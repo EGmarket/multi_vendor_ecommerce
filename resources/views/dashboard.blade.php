@@ -6,15 +6,15 @@
                 <div class="col-md-2 ">
                     <br>
                     <br>
-                    <img class="card-img-top mb-4" style="border-radius: 50%" src="{{ (!empty($editData->profile_photo_path))?
-                                                    url('upload/admin_images/'.$editData->profile_photo_path) :url('upload/no_image.jpg') }}" height="100%" width="100%" alt="">
+                    <img class="card-img-top mb-4" style="border-radius: 50%" src="{{ (!empty($user->profile_photo_path))?
+                                                    url('upload/user_images/'.$user->profile_photo_path) :url('upload/no_image.jpg') }}" height="100%" width="100%" alt="">
                     <br>
                     <br>
                     <ul class="list-group list-group-flush">
                         <a href="" class="btn btn-primary btn-sm btn-block">Home</a>
-                        <a href="" class="btn btn-primary btn-sm btn-block">profile</a>
+                        <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">profile</a>
                         <a href="" class="btn btn-primary btn-sm btn-block">change password</a>
-                        <a href="" class="btn btn-danger btn-sm btn-block">Logout</a>
+                        <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
 
                     </ul>
 
