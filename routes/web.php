@@ -47,6 +47,8 @@ Route::post('/admin/profile/store',[AdminProfileController::class,'AdminProfileS
 Route::prefix('brand')->group(function (){
     Route::get('/view',[BrandController::class,'BrandView'])->name('all.brand');
     Route::post('/store',[BrandController::class,'BrandStore'])->name('brand.store');
+    Route::get('/edit/{id}',[BrandController::class,'BrandEdit'])->name('brand.edit');
+    Route::post('/update',[BrandController::class,'BrandUpdate'])->name('brand.update');
 });
 
 
