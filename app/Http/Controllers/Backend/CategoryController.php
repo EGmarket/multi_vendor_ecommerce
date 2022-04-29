@@ -84,4 +84,16 @@ class CategoryController extends Controller
         }
 
     }
+
+    public function CategoryDelete($id){
+        $category = Category::findOrFail($id);
+        $img = $category->category_icon;
+        unlink($img);
+        Category::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Brand Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }
