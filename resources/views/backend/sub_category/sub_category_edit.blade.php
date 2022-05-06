@@ -20,8 +20,9 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('sub_category.update') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('sub_category.update',$sub_categories->id) }}" method="POST" >
                             @csrf
+                            <input type="hidden" name="id" value="{{ $sub_categories->id }}">
                             <div class="form-group">
                                 <h5>Category Select <span class="text-danger">*</span></h5>
                                 <div class="controls">
@@ -42,7 +43,7 @@
                             <div class="form-group">
                                 <h5>Brand Name English</h5>
                                 <div class="controls">
-                                    <input type="text" class="form-control "   name="category_name_en" value="{{ $sub_categories->sub_category_name_en }}">
+                                    <input type="text" class="form-control "   name="sub_category_name_en" value="{{ $sub_categories->sub_category_name_en }}">
                                     @error('sub_category_name_en')
 
                                     <span class="text-danger">{{ $message }}</span>
@@ -53,7 +54,7 @@
                             </div><div class="form-group">
                                 <h5>Brand Name Bangla</h5>
                                 <div class="controls">
-                                    <input type="text" class="form-control"  name="category_name_bn" value="{{ $sub_categories->sub_category_name_bn }}">
+                                    <input type="text" class="form-control"  name="sub_category_name_bn" value="{{ $sub_categories->sub_category_name_bn }}">
                                     @error('sub_category_name_bn')
 
                                     <span class="text-danger">{{ $message }}</span>

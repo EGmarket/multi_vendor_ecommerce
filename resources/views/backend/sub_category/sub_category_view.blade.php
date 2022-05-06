@@ -100,7 +100,7 @@
                                 <h5>Sub_category Bangla</h5>
                                 <div class="controls">
                                     <input type="text" class="form-control"  name="sub_category_name_bn" >
-                                    @error('sub_category_name_en')
+                                    @error('sub_category_name_bn')
 
                                     <span class="text-danger">{{ $message }}</span>
 
