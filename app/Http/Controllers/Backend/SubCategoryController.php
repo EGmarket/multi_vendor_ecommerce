@@ -10,19 +10,21 @@ use Image;
 
 class SubCategoryController extends Controller
 {
-    public function SubCategoryView(){
-        $categories =Category::orderBy('category_name_en','ASC')->get();
+    public function SubCategoryView()
+    {
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
         $sub_categories = SubCategory::latest()->get();
-        return view('backend.sub_category.sub_category_view',compact('sub_categories','categories'));
+        return view('backend.sub_category.sub_category_view', compact('sub_categories', 'categories'));
     }
 
-    public function SubCategoryStore(Request $request){
+    public function SubCategoryStore(Request $request)
+    {
         $request->validate([
-            'category_id'=> 'required',
+            'category_id' => 'required',
             'sub_category_name_en' => 'required',
             'sub_category_name_bn' => 'required',
-        ],[
-            'category_id.required' => 'Please select Any Option',
+        ], [
+                'category_id.required' => 'Please select Any Option',
                 'sub_category_name_bn.required' => 'Input SubCategory name Bangla'
             ]
         );
@@ -34,10 +36,10 @@ class SubCategoryController extends Controller
 
         SubCategory::insert([
             'category_id' => $request->category_id,
-            'sub_category_name_en'=> $request->sub_category_name_en,
-            'sub_category_name_bn'=> $request->sub_category_name_bn,
-            'sub_category_slug_en'=> strtolower(str_replace(' ','-',$request->sub_category_name_en)),
-            'sub_category_slug_bn'=> str_replace(' ','-',$request->sub_category_name_bn),
+            'sub_category_name_en' => $request->sub_category_name_en,
+            'sub_category_name_bn' => $request->sub_category_name_bn,
+            'sub_category_slug_en' => strtolower(str_replace(' ', '-', $request->sub_category_name_en)),
+            'sub_category_slug_bn' => str_replace(' ', '-', $request->sub_category_name_bn),
 
         ]);
         $notification = array(
@@ -47,20 +49,22 @@ class SubCategoryController extends Controller
         return redirect()->back()->with($notification);
     }
 
-    public function SubCategoryEdit($id){
-        $categories = Category::orderBy('category_name_en','ASC')->get();
+    public function SubCategoryEdit($id)
+    {
+        $categories = Category::orderBy('category_name_en', 'ASC')->get();
         $sub_categories = SubCategory::findOrFail($id);
-        return view ('backend.sub_category.sub_category_edit', compact('sub_categories','categories'));
+        return view('backend.sub_category.sub_category_edit', compact('sub_categories', 'categories'));
     }
 
-    public function SubCategoryUpdate(Request $request){
+    public function SubCategoryUpdate(Request $request)
+    {
         $subcat_id = $request->id;
         SubCategory::findOrFail($subcat_id)->update([
             'category_id' => $request->category_id,
-            'sub_category_name_en'=> $request->sub_category_name_en,
-            'sub_category_name_bn'=> $request->sub_category_name_bn,
-            'sub_category_slug_en'=> strtolower(str_replace(' ','-',$request->sub_category_name_en)),
-            'sub_category_slug_bn'=> str_replace(' ','-',$request->sub_category_name_bn),
+            'sub_category_name_en' => $request->sub_category_name_en,
+            'sub_category_name_bn' => $request->sub_category_name_bn,
+            'sub_category_slug_en' => strtolower(str_replace(' ', '-', $request->sub_category_name_en)),
+            'sub_category_slug_bn' => str_replace(' ', '-', $request->sub_category_name_bn),
 
         ]);
         $notification = array(
@@ -68,5 +72,14 @@ class SubCategoryController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('all.sub_category')->with($notification);
+    }
+    public function SubCategoryDelete($id){
+        SubCategory::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Brand Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
     }
 }
