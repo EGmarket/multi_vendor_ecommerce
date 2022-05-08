@@ -67,7 +67,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('sub_category.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('sub_sub_category.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <h5>Category Select <span class="text-danger">*</span></h5>

@@ -19,4 +19,31 @@ class SubSubController extends Controller
         $subcat = SubCategory::where('category_id',$category_id)->orderBy('sub_category_name_en','ASC')->get();
         return json_encode($subcat);
     }
+
+    public function SubSubCategoryStore(Request $request){
+        $request->validate([
+            'category_id' => 'required',
+            'subsubcategory_name_en' => 'required',
+            'subsubcategory_name_bn' => 'required',
+        ], [
+                'category_id.required' => 'Please select Any Option',
+                'subsubcategory_name_en.required' => 'Input SubCategory name Bangla'
+            ]
+        );
+
+        SubSubCategory::insert([
+            'category_id' => $request->category_id,
+            'subcategory_id' => $request->subcategory_id,
+            'subsubcategory_name_en' => $request->subsubcategory_name_en,
+            'subsubcategory_name_bn' => $request->subsubcategory_name_bn,
+            'subsubcategory_slug_en' => strtolower(str_replace(' ', '-', $request->subsubcategory_name_en)),
+            'subsubcategory_slug_bn' => str_replace(' ', '-', $request->subsubcategory_name_bn),
+
+        ]);
+        $notification = array(
+            'message' => 'sub_SubCategory Insert Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }
