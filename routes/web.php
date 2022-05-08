@@ -4,8 +4,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
-use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\SubSubController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +69,10 @@ Route::prefix('category')->group(function (){
     Route::get('/sub/edit/{id}',[SubCategoryController::class,'SubCategoryEdit'])->name('sub_category.edit');
     Route::post('/sub/update',[SubCategoryController::class,'SubCategoryUpdate'])->name('sub_category.update');
     Route::get('/sub/delete/{id}',[SubCategoryController::class,'SubCategoryDelete'])->name('sub_category.delete');
+
+    // Admin sub sub category routes
+    Route::get('/sub/sub/view',[SubSubController::class,'SubSubCategoryView'])->name('all.sub_sub_category');
+    Route::get('/subcategory/ajax/{category_id}',[SubSubController::class,'GetSubCategory']);
 });
 
 
