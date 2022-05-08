@@ -68,6 +68,16 @@ class SubSubController extends Controller
             'message' => 'sub_SubCategory Insert Successfully done',
             'alert-type' => 'success'
         );
+        return redirect()->route('all.sub_sub_category')->with($notification);
+    }
+
+    public function SubSubCategoryDelete($id){
+        SubSubCategory::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Brand Deleted Successfully done',
+            'alert-type' => 'success'
+        );
         return redirect()->back()->with($notification);
     }
 }
