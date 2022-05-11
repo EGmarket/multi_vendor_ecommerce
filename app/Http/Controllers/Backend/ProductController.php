@@ -75,7 +75,12 @@ class ProductController extends Controller
             'message' => 'sub_SubCategory Insert Successfully done',
             'alert-type' => 'success'
         );
-        return redirect()->back()->with($notification);
+        return redirect()->route('product-manage')->with($notification);
 
+    }
+
+    public function ManageProduct(){
+        $products = Product::latest()->get();
+        return view('backend.product.product_view',compact('products'));
     }
 }

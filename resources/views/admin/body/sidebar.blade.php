@@ -60,7 +60,7 @@
 
             <li class="treeview {{ ($prefix == '/product')? 'active':'' }}">
                 <a href="#">
-                    <i data-feather="grid"></i>
+                    <i data-feather="message-circle"></i>
                     <span>Products</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -68,7 +68,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li> class="{{ ($route == 'add_product')? 'active':'' }}"<a href="{{ route('add_product') }}"><i class="ti-more"></i>Add Products</a></li>
-                    <li><a href="components_badges.html"><i class="ti-more"></i>Manage Products</a></li>
+                    <li> class="{{ ($route == 'product-manage')? 'active':'' }}" <a href="{{ route('product-manage') }}"><i class="ti-more"></i>Manage Products</a></li>
                 </ul>
             </li>
 

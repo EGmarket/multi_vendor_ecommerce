@@ -365,7 +365,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <input type="checkbox" id="checkbox_1" value="single" name="hot_deals">
+                                                    <input type="checkbox" id="checkbox_1" value="1" name="hot_deals">
                                                     <label for="checkbox_1">Hot Deals</label>
                                                 </div>
                                             </div>
