@@ -84,6 +84,7 @@ Route::prefix('category')->group(function (){
 // Admin product all routes
 Route::prefix('product')->group(function (){
     Route::get('/add',[ProductController::class,'AddProduct'])->name('add_product');
+    Route::post('/store',[ProductController::class,'StoreProduct'])->name('product-store');
 
 });
 
