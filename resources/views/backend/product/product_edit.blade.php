@@ -20,8 +20,9 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col">
-                            <form method="post" action="{{ route('product-store') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('product-update') }}" >
                                 @csrf
+                                <input type="hidden" name="id"  value="{{ $products->id}}">
                                 <div class="row">
                                     <div class="col-12">
                                         {{--                                            1st row--}}
@@ -224,7 +225,7 @@
 
                                         {{--                                            ////////////////////// 5th row ///////////////// --}}
                                         <div class="row">
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Product_color_en <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -237,7 +238,7 @@
                                                 </div>
                                             </div>
                                             {{--                                                end 1st row--}}
-                                            <div class="col-md-4">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Product_color_bn <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -250,7 +251,12 @@
                                                 </div>
                                             </div>
                                             {{--                                                end 2nd row--}}
-                                            <div class="col-md-4">
+
+                                            {{--                                                end 3rd row--}}
+                                        </div>
+                                        {{--                                            ////////////////////////// 6th Row ////////////////// --}}
+                                        <div class="row">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Product_selling_price <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -262,11 +268,8 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            {{--                                                end 3rd row--}}
-                                        </div>
-                                        {{--                                            ////////////////////////// 6th Row ////////////////// --}}
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                            {{--                                                end 1st row--}}
+                                            <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Product_Discount_price <span class="text-danger">*</span></h5>
                                                     <div class="controls">
@@ -278,36 +281,8 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            {{--                                                end 1st row--}}
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <h5>Product_main_img <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="file" name="product_thumbnail" class="form-control" value="" onChange="mainThumbnailUrl(this)"  placeholder=""> </div>
-                                                    @error('product_thumbnail')
-
-                                                    <span class="text-danger">{{ $message }}</span>
-
-                                                    @enderror
-                                                    <img src="" id="mainThmb" >
-                                                </div>
-                                            </div>
                                             {{--                                                end 2nd row--}}
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <h5>Product_multi_img <span class="text-danger">*</span></h5>
-                                                    <div class="controls">
-                                                        <input type="file" name="multi_img[]" class="form-control" value="" multiple="" id="multiImg"  > </div>
-                                                    @error('multi_img[]')
 
-                                                    <span class="text-danger">{{ $message }}</span>
-
-                                                    @enderror
-                                                    <div class="row" id="preview_img">
-
-                                                    </div>
-                                                </div>
-                                            </div>
                                             {{--                                                end 3rd row--}}
                                         </div>
 
@@ -377,7 +352,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="controls">
-                                                <input type="checkbox" id="checkbox_2"  value="single" name="featured" {{ $products->featured == 1 ? 'checked' : '' }}>
+                                                <input type="checkbox" id="checkbox_2"  value="1" name="featured" {{ $products->featured == 1 ? 'checked' : '' }}>
                                                 <label for="checkbox_2">Featured</label>
                                             </div>
                                         </div>
