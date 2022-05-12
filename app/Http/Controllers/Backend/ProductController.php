@@ -99,14 +99,14 @@ class ProductController extends Controller
 
     /* Product Details function*/
     public function DetailsProduct($id){
-        $multiImgs = MultiImg::where('product_id',$id)->get();
+        $multiImages = MultiImg::where('product_id',$id)->get();
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
         $subsubcategories = SubSubCategory::latest()->get();
         $brands = Brand::latest()->get();
         $products = Product::findOrFail($id);
         return view('backend.product.product_details',compact('categories','subcategories',
-            'subsubcategories','brands','products','multiImgs'));
+            'subsubcategories','brands','products','multiImages'));
     }
 
     public function UpdateProductData(Request $request){
