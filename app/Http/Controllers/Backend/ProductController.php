@@ -62,10 +62,10 @@ class ProductController extends Controller
         ]);
 
 //        /------------------------------ Multiple Image Upload --------------------/
-        $images = $request->file('multi_img');
-        foreach ($images as $img){
-            $make_name = hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
-            Image::make($img)->resize(917,1000)->save('upload/product/multi_img/'.$make_name);
+        $Multiimages = $request->file('multi_img');
+        foreach ($Multiimages as $multiImg){
+            $make_name = hexdec(uniqid()).'.'.$multiImg->getClientOriginalExtension();
+            Image::make($multiImg)->resize(917,1000)->save('upload/product/multi_img/'.$make_name);
             $uploadPath = 'upload/product/multi_img/'.$make_name;
         }
         MultiImg::insert([
@@ -86,13 +86,14 @@ class ProductController extends Controller
         return view('backend.product.product_view',compact('products'));
     }
     public function EditProduct($id){
+        $multiImgs = MultiImg::where('product_id',$id)->get();
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
         $subsubcategories = SubSubCategory::latest()->get();
         $brands = Brand::latest()->get();
         $products = Product::findOrFail($id);
         return view('backend.product.product_edit',compact('categories','subcategories',
-        'subsubcategories','brands','products'));
+        'subsubcategories','brands','products','multiImgs'));
     }
 
     public function UpdateProductData(Request $request){
@@ -132,5 +133,28 @@ class ProductController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->route('product-manage')->with($notification);
-    }
+    } /*end method*/
+
+    /*multiImage Update*/
+    public function MultiImgUpdate(Request $request){
+        $imgs = $request->multi_img;
+        foreach ($imgs as $id => $multiImg){
+            $imgDel = MultiImg::findOrFail($id);
+            unlink($imgDel->photo_name);
+            $make_name = hexdec(uniqid()).'.'.$multiImg->getClientOriginalExtension();
+            Image::make($multiImg)->resize(917,1000)->save('upload/product/multi_img/'.$make_name);
+            $uploadPath = 'upload/product/multi_img/'.$make_name;
+
+            MultiImg::where('id',$id)->update([
+                'photo_name' => $uploadPath,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        } /* end foreach */
+        $notification = array(
+            'message' => 'sub_SubCategory Insert Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    } /*end method*/
 }

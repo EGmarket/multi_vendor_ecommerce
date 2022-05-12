@@ -389,6 +389,47 @@
 
         </section>
         <!-- /.content -->
+        {{--////////////// Multiple image update part ///////--}}
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bt-3 border-info">
+                        <div class="box-header">
+                            <h4 class="box-title">Multiple <strong>Image</strong></h4>
+                        </div>
+                        <form method="post" action="{{ route('update-product-image') }}"  enctype="multipart/form-data">
+                            @csrf
+                            <div class="row row-sm mt-5 ml-5">
+                                @foreach($multiImgs as $multiImg)
+                                <div class="col-md-3">
+
+                                    <div class="card" style="height: 50%; width: 50%;">
+                                        <img class="card-img-top" src="{{ asset($multiImg->photo_name) }}">
+                                        <div class="card-body">
+                                            <a href="" class="btn btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
+                                            <p class="card-text">
+                                                <div class="form-group">
+                                                <label for="" class="form-control-label"> Change Image</label>
+                                                <input type="file" class="form-control" name="multi_img[ {{$multiImg->id}} ]">
+                                            </div>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div> {{--end col-md-3--}}
+                                @endforeach
+                            </div>
+                            <div class="text-xs-right">
+                                <input type="submit" class="btn btn-danger" value="Update Image"/>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div> {{--end row--}}
+        </section>
     </div>
 
     <script type="text/javascript">

@@ -291,7 +291,7 @@
                                                     <div class="form-group">
                                                         <h5>Product_multi_img <span class="text-danger">*</span></h5>
                                                         <div class="controls">
-                                                            <input type="file" name="multi_img[]" class="form-control" value="" multiple="" id="multiImg"  > </div>
+                                                            <input type="file" name="multi_img[]" class="form-control" value=""  id="multiImg" multiple > </div>
                                                         @error('multi_img[]')
 
                                                         <span class="text-danger">{{ $message }}</span>
