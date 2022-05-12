@@ -32,7 +32,7 @@ return new class extends Migration
             $table->string('product_color_en')->nullable();
             $table->string('product_color_bn')->nullable();
             $table->string('selling_price');
-            $table->string('discount_price');
+            $table->string('discount_price')->nullable();
             $table->string('short_desc_en');
             $table->string('short_desc_bn');
             $table->string('long_desc_en');
