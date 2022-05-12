@@ -204,4 +204,22 @@ class ProductController extends Controller
         );
         return redirect()->back()->with($notification);
     } /* end Method*/
+
+    /* Product active and inactive method started from here*/
+    public function ProductInactive($id){
+        Product::findOrFail($id)->update(['status' => 0]);
+        $notification = array(
+            'message' => 'Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+    public function ProductActive($id){
+        Product::findOrFail($id)->update(['status' => 1]);
+        $notification = array(
+            'message' => 'Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }

@@ -50,7 +50,12 @@
                                         <td width="30%">
                                             <a href="{{ route('product.details',$product->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                             <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info">Edit</a>
-                                            <a href="{{ route('category.delete',$product->id) }}" class="btn btn-danger" id="delete">Delete</a>
+                                            <a href="{{ route('category.delete',$product->id) }}" class="btn btn-danger" id="delete"><i class="fa fa-trash"></i></a>
+                                            @if($product->status == 1)
+                                                <a href="{{ route('product.inactive',$product->id) }}" title="InActive Now" class="btn btn-primary"><i class="fa fa-arrow-down"></i></a>
+                                            @else
+                                                <a href="{{ route('product.active',$product->id) }}" title="active Now" class="btn btn-danger"><i class="fa fa-arrow-up"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
