@@ -89,6 +89,7 @@ Route::prefix('product')->group(function (){
     Route::get('/edit/{id}',[ProductController::class,'EditProduct'])->name('product.edit');
     Route::post('/data/update',[ProductController::class,'UpdateProductData'])->name('product-update');
     Route::post('/image/update',[ProductController::class,'MultiImgUpdate'])->name('update-product-image');
+    Route::post('/thumbnail/update',[ProductController::class,'ThumbnailImgUpdate'])->name('update-product-thumbnail');
 
 });
 

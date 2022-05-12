@@ -430,6 +430,51 @@
 
             </div> {{--end row--}}
         </section>
+
+        {{-- Main Thumbnail Image Update Area --}}
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box bt-3 border-info">
+                        <div class="box-header">
+                            <h4 class="box-title">Thumbnail<strong>Image</strong></h4>
+                        </div>
+                        <form method="post" action="{{ route('update-product-thumbnail') }}"  enctype="multipart/form-data">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $products->id }}">
+                            <input type="hidden" name="old_img" value="{{ $products->product_thumbnail }}">
+                            <div class="row row-sm mt-5 ml-5">
+
+                                <div class="col-md-3">
+
+                                    <div class="card" style="height: 50%; width: 50%;">
+                                        <img class="card-img-top" src="{{ asset($products->product_thumbnail) }}">
+                                        <div class="card-body">
+                                            <a href="" class="btn btn-danger" id="delete" title="Delete Data"><i class="fa fa-trash"></i></a>
+                                            <p class="card-text">
+                                                <div class="form-group">
+                                                <label for="" class="form-control-label"> Change Image</label>
+                                                <input type="file" class="form-control" name="product_thumbnail" onChange="mainThumbnailUrl(this)">
+                                                <img src="" id="mainThmb" alt="">
+                                            </div>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                </div> {{--end col-md-3--}}
+
+                            </div>
+                            <div class="text-xs-right">
+                                <input type="submit" class="btn btn-danger" value="Update Image"/>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+
+
+            </div> {{--end row--}}
+        </section>
     </div>
 
     <script type="text/javascript">
