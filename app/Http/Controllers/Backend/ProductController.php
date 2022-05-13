@@ -99,14 +99,14 @@ class ProductController extends Controller
 
     /* Product Details function*/
     public function DetailsProduct($id){
-        $multiImages = MultiImg::where('product_id',$id)->get();
+        $multiImgs = MultiImg::where('product_id',$id)->get();
         $categories = Category::latest()->get();
         $subcategories = SubCategory::latest()->get();
         $subsubcategories = SubSubCategory::latest()->get();
         $brands = Brand::latest()->get();
         $products = Product::findOrFail($id);
         return view('backend.product.product_details',compact('categories','subcategories',
-            'subsubcategories','brands','products','multiImages'));
+            'subsubcategories','brands','products','multiImgs'));
     }
 
     public function UpdateProductData(Request $request){
@@ -221,5 +221,22 @@ class ProductController extends Controller
             'alert-type' => 'success'
         );
         return redirect()->back()->with($notification);
-    }
+    } /* Product active and inactive method End here*/
+    /* Product Delete method started from here*/
+    public function ProductDelete($id){
+        $product = Product::findOrFail($id);
+        unlink($product->product_thumbnail);
+        Product::findOrFail($id)->delete();
+        $images = MultiImg::where('product_id',$id)->get();
+        foreach ($images as $img){
+            unlink($img->photo_name);
+            MultiImg::where('product_id',$id)->delete();
+        }
+        $notification = array(
+            'message' => 'Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+
+    } /* end Method*/
 }
