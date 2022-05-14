@@ -35,4 +35,22 @@ class SliderController extends Controller
         return redirect()->back()->with($notification);
 
     }
+
+    /* Slider active and inactive method started from here*/
+    public function SliderInactive($id){
+        Slider::findOrFail($id)->update(['status' => 0]);
+        $notification = array(
+            'message' => 'Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
+    public function SliderActive($id){
+        Slider::findOrFail($id)->update(['status' => 1]);
+        $notification = array(
+            'message' => 'Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    } /* Slider active and inactive method End here*/
 }

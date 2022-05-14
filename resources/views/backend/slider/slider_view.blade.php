@@ -47,9 +47,9 @@
                                             <a href="{{ route('brand.edit',$slider->id) }}" class="btn btn-info">Edit</a>
                                             <a href="{{ route('brand.delete',$slider->id) }}" class="btn btn-danger" id="delete">Delete</a>
                                             @if($slider->status == 1)
-                                                <a href="{{ route('product.inactive',$slider->id) }}" title="InActive Now" class="btn btn-primary"><i class="fa fa-arrow-down"></i></a>
+                                                <a href="{{ route('slider.inactive',$slider->id) }}" title="InActive Now" class="btn btn-primary"><i class="fa fa-arrow-down"></i></a>
                                             @else
-                                                <a href="{{ route('product.active',$slider->id) }}" title="active Now" class="btn btn-danger"><i class="fa fa-arrow-up"></i></a>
+                                                <a href="{{ route('slider.active',$slider->id) }}" title="active Now" class="btn btn-danger"><i class="fa fa-arrow-up"></i></a>
                                             @endif
                                         </td>
                                     </tr>

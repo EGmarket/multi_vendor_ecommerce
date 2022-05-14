@@ -74,7 +74,7 @@ class ProductController extends Controller
             'created_at' => Carbon::now(),
         ]);
         $notification = array(
-            'message' => 'sub_SubCategory Insert Successfully done',
+            'message' => 'Multi Image inserted Successfully done',
             'alert-type' => 'success'
         );
         return redirect()->route('product-manage')->with($notification);

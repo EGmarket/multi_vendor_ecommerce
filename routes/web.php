@@ -103,6 +103,8 @@ Route::prefix('product')->group(function (){
 Route::prefix('slider')->group(function (){
     Route::get('/view',[SliderController::class,'SliderView'])->name('slider-manage');
     Route::post('/store',[SliderController::class,'SliderStore'])->name('slider.store');
+    Route::get('/inactive/{id}',[SliderController::class,'SliderInactive'])->name('slider.inactive');
+    Route::get('/active/{id}',[SliderController::class,'SliderActive'])->name('slider.active');
 
 
 });
