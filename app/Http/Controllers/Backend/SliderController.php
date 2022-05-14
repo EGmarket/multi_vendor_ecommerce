@@ -98,4 +98,17 @@ class SliderController extends Controller
         );
         return redirect()->back()->with($notification);
     } /* Slider active and inactive method End here*/
+
+    /* Slider Delete functions*/
+    public function SliderDelete($id){
+        $slider = Slider::findOrFail($id);
+        $img = $slider->slider_img;
+        unlink($img);
+        Slider::findOrFail($id)->delete();
+        $notification = array(
+            'message' => 'Brand Deleted Successfully done',
+            'alert-type' => 'success'
+        );
+        return redirect()->back()->with($notification);
+    }
 }
