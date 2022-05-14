@@ -44,7 +44,7 @@
                                             @endif
                                         </td>
                                         <td width="30%">
-                                            <a href="{{ route('brand.edit',$slider->id) }}" class="btn btn-info">Edit</a>
+                                            <a href="{{ route('slider.edit',$slider->id) }}" class="btn btn-info">Edit</a>
                                             <a href="{{ route('brand.delete',$slider->id) }}" class="btn btn-danger" id="delete">Delete</a>
                                             @if($slider->status == 1)
                                                 <a href="{{ route('slider.inactive',$slider->id) }}" title="InActive Now" class="btn btn-primary"><i class="fa fa-arrow-down"></i></a>

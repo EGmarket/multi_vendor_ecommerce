@@ -36,6 +36,12 @@ class SliderController extends Controller
 
     }
 
+    /*slider edit function*/
+    public function EditSlider($id){
+        $sliders = Slider::findOrFail($id);
+        return view('backend.slider.slider_edit', compact('sliders'));
+    }
+
     /* Slider active and inactive method started from here*/
     public function SliderInactive($id){
         Slider::findOrFail($id)->update(['status' => 0]);
