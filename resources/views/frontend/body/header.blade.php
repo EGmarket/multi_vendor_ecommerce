@@ -168,7 +168,7 @@
                     <div class="yamm-content ">
                         <div class="row">
                             @php
-                                $subcategories = \App\Models\SubCategory::orderBy('sub_category_name_en','ASC')->get();
+                                $subcategories = \App\Models\SubCategory::where('category_id',$category->id)->orderBy('sub_category_name_en','ASC')->get();
                             @endphp
 
                             @foreach($subcategories as $subcategory)
