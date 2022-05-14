@@ -20,7 +20,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <form action="{{ route('brand.update',$sliders->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('slider.update',$sliders->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="id" value="{{ $sliders->id }}">
                             <input type="hidden" name="old_img" value="{{ $sliders->slider_img }}">
