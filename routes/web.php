@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\SubSubController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\LanguageController;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -134,3 +135,10 @@ Route::get('/user/profile',[IndexController::class,'UserProfile'])->name('user.p
 Route::post('/user/profile/update',[IndexController::class,'UserProfileUpdate'])->name('user.profile.update');
 Route::get('/change/password',[IndexController::class,'ChangePassword'])->name('change.password');
 Route::post('/user/password/update',[IndexController::class,'UserPasswordUpdate'])->name('update.password');
+
+/*Frontend all routes goes here*/
+
+/*Multi language routes*/
+Route::get('/language/english',[LanguageController::class,'English'])->name('english.language');
+Route::get('/language/bangla',[LanguageController::class,'Bangla'])->name('bangla.language');
+
