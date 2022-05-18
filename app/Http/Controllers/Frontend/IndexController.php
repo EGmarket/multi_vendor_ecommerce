@@ -15,7 +15,7 @@ class IndexController extends Controller
 {
     public function Index(){
         $categories = Category::orderBy('category_name_en','ASC')->get();
-        return view('frontend.index',compact('categories'));
+        return view('frontend.index',compact('categories' ));
     }
 
     public function UserLogout(){
