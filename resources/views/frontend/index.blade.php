@@ -247,14 +247,7 @@
             <!-- /.sidebar-widget -->
             <!-- ============================================== SPECIAL OFFER : END ============================================== -->
             <!-- ============================================== PRODUCT TAGS ============================================== -->
-            <div class="sidebar-widget product-tag wow fadeInUp">
-                <h3 class="section-title">Product tags</h3>
-                <div class="sidebar-widget-body outer-top-xs">
-                    <div class="tag-list"> <a class="item" title="Phone" href="category.html">Phone</a> <a class="item active" title="Vest" href="category.html">Vest</a> <a class="item" title="Smartphone" href="category.html">Smartphone</a> <a class="item" title="Furniture" href="category.html">Furniture</a> <a class="item" title="T-shirt" href="category.html">T-shirt</a> <a class="item" title="Sweatpants" href="category.html">Sweatpants</a> <a class="item" title="Sneaker" href="category.html">Sneaker</a> <a class="item" title="Toys" href="category.html">Toys</a> <a class="item" title="Rose" href="category.html">Rose</a> </div>
-                    <!-- /.tag-list -->
-                </div>
-                <!-- /.sidebar-widget-body -->
-            </div>
+            @include('frontend.common.product_tag')
             <!-- /.sidebar-widget -->
             <!-- ============================================== PRODUCT TAGS : END ============================================== -->
             <!-- ============================================== SPECIAL DEALS ============================================== -->
@@ -1028,7 +1021,7 @@
                 <h3 class="section-title">   @if(session()->get('language') == 'bangla') {{ $skip_brand_0->brand_name_bn}} @else {{ $skip_brand_0->brand_name_en}} @endif </h3>
                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme outer-top-xs">
                     @foreach($skip_product_1 as $product)
-                        <div class="item item-carousel">
+                        <div class="item item-carousel">PRODUCT TAGS
                             <div class="products">
                                 <div class="product">
                                     <div class="product-image">
