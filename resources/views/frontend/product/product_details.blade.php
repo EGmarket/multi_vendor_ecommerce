@@ -69,7 +69,7 @@
                                         </div><!-- /.hot-deal-wrapper -->
 
                                         <div class="product-info text-left m-t-20">
-                                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                                            <h3 class="name"><a href="detail.html"> @if(session()->get('language') == 'bangla') {{ $product->product_name_bn }} @else {{ $product->product_name_en }} @endif </a></h3>
                                             <div class="rating rateit-small"></div>
 
                                             <div class="product-price">
@@ -137,7 +137,9 @@
                                         </div><!-- /.hot-deal-wrapper -->
 
                                         <div class="product-info text-left m-t-20">
-                                            <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                                            <h3 class="name"><a href="detail.html">
+                                                    @if(session()->get('language') == 'bangla') {{ $product->product_name_bn }} @else {{ $product->product_name_en }} @endif
+                                                </a></h3>
                                             <div class="rating rateit-small"></div>
 
                                             <div class="product-price">
@@ -417,7 +419,9 @@
                             </div><!-- /.gallery-holder -->
                             <div class='col-sm-6 col-md-7 product-info-block'>
                                 <div class="product-info">
-                                    <h1 class="name">Floral Print Buttoned</h1>
+                                    <h1 class="name">
+                                        @if(session()->get('language') == 'bangla') {{ $product->product_name_bn }} @else {{ $product->product_name_en }} @endif
+                                    </h1>
 
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
@@ -448,7 +452,7 @@
                                     </div><!-- /.stock-container -->
 
                                     <div class="description-container m-t-20">
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                        @if(session()->get('language') == 'bangla') {{ $product->short_desc_bn }} @else {{ $product->short_desc_en }} @endif
                                     </div><!-- /.description-container -->
 
                                     <div class="price-container info-container m-t-20">
@@ -457,8 +461,11 @@
 
                                             <div class="col-sm-6">
                                                 <div class="price-box">
-                                                    <span class="price">$800.00</span>
-                                                    <span class="price-strike">$900.00</span>
+                                                    @if ($product->discount_price == NULL)
+                                                        <div class="product-price"> <span class="price"> ${{ $product->selling_price }} </span>  </div>
+                                                    @else
+                                                        <div class="product-price"> <span class="price "> ${{ $product->discount_price }} </span> <span class="price-before-discount price-strike">$ {{ $product->selling_price }}</span> </div>
+                                                    @endif
                                                 </div>
                                             </div>
 
@@ -531,7 +538,7 @@
 
                                     <div id="description" class="tab-pane in active">
                                         <div class="product-tab">
-                                            <p class="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                            @if(session()->get('language') == 'bangla') {!! $product->long_desc_bn !!} @else {!! $product->long_desc_en !!} @endif
                                         </div>
                                     </div><!-- /.tab-pane -->
 
