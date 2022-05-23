@@ -380,11 +380,11 @@
                                             <div class="form-group">
                                                 <div class="controls">
                                                     <fieldset>
-                                                        <input type="checkbox" id="checkbox_3"  value="x" name="special_offer">
+                                                        <input type="checkbox" id="checkbox_3"  value="1" name="special_offer">
                                                         <label for="checkbox_3">Special_offer</label>
                                                     </fieldset>
                                                     <fieldset>
-                                                        <input type="checkbox" id="checkbox_4" value="y" name="special_deals">
+                                                        <input type="checkbox" id="checkbox_4" value="1" name="special_deals">
                                                         <label for="checkbox_4">Special_deals</label>
                                                     </fieldset>
                                                 </div>
