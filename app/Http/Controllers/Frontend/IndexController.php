@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Slider;
@@ -22,11 +23,15 @@ class IndexController extends Controller
         $hot_deals = Product::where('hot_deals',1)->orderBy('id','DESC')->limit(3)->get();
         $special_offer = Product::where('special_offer',1)->orderBy('id','DESC')->limit(3)->get();
         $products = Product::where('status',1)->orderBy('id','DESC')->get();
+
         $skip_category_0 = Category::skip(0)->first();
         $skip_product_0 = Product::where('status',1)->where('category_id',$skip_category_0->id)->orderBy('id','DESC')->get();
 
+        $skip_brand_0 = Brand::skip(0)->first();
+        $skip_product_1 = Product::where('status',1)->where('brand_id',$skip_brand_0->id)->orderBy('id','DESC')->get();
+
         return view('frontend.index',compact('categories' ,'sliders','products','featured',
-            'hot_deals','special_offer','skip_category_0','skip_product_0'));
+            'hot_deals','special_offer','skip_category_0','skip_product_0' , 'skip_brand_0', 'skip_product_1'));
     }
 
     public function UserLogout(){
