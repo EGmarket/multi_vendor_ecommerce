@@ -151,4 +151,6 @@ Route::get('/product/tag/{tag}',[IndexController::class,'ProductTags']);
 
 /*Category wise product route*/
 Route::get('/subcategory/product/{subcat_id}/{slug}',[IndexController::class,'SubCatWiseProduct']);
+/*SubSub Categorywise Product*/
+Route::get('/subsubcategory/product/{subsubcat_id}/{slug}',[IndexController::class,'SubSubCatWiseProduct']);
 

@@ -36,30 +36,30 @@
                                 <div class="sidebar-widget-body">
                                     <div class="accordion">
                                         @foreach($categories as $category)
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
-                                                    @if(session()->get('language') == 'bangla') {{ $category->category_name_bn }} @else {{ $category->category_name_en }} @endif
+                                            <div class="accordion-group">
+                                                <div class="accordion-heading"> <a href="#collapse{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
+                                                        @if(session()->get('language') == 'bangla') {{ $category->category_name_bn }} @else {{ $category->category_name_en }} @endif
 
-                                                </a> </div>
-                                            <!-- /.accordion-heading -->
-                                            <div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
-                                                <div class="accordion-inner">
-                                                    @php
-                                                        $subcategories = \App\Models\SubCategory::where('category_id',$category->id)->orderBy('sub_category_name_en','ASC')->get();
-                                                    @endphp
+                                                    </a> </div>
+                                                <!-- /.accordion-heading -->
+                                                <div class="accordion-body collapse" id="collapse{{ $category->id }}" style="height: 0px;">
+                                                    <div class="accordion-inner">
+                                                        @php
+                                                            $subcategories = \App\Models\SubCategory::where('category_id',$category->id)->orderBy('sub_category_name_en','ASC')->get();
+                                                        @endphp
 
-                                                    @foreach($subcategories as $subcategory)
-                                                    <ul>
-                                                        <li><a href="{{ url('subcategory/product/'.$subcategory->id.'/'.$subcategory->sub_category_slug_en) }}">@if(session()->get('language') == 'bangla') {{ $subcategory->sub_category_name_bn }} @else {{ $subcategory->sub_category_name_en }} @endif</a></li>
+                                                        @foreach($subcategories as $subcategory)
+                                                            <ul>
+                                                                <li><a href="#">@if(session()->get('language') == 'bangla') {{ $subcategory->sub_category_name_bn }} @else {{ $subcategory->sub_category_name_en }} @endif</a></li>
 
-                                                    </ul>
-                                                    @endforeach
+                                                            </ul>
+                                                        @endforeach
+                                                    </div>
+                                                    <!-- /.accordion-inner -->
                                                 </div>
-                                                <!-- /.accordion-inner -->
+                                                <!-- /.accordion-body -->
                                             </div>
-                                            <!-- /.accordion-body -->
-                                        </div>
-                                        <!-- /.accordion-group -->
+                                            <!-- /.accordion-group -->
                                         @endforeach
 
                                     </div>
@@ -93,11 +93,11 @@
                                 </div>
                                 <div class="sidebar-widget-body">
                                     @foreach($brands as $brand)
-                                    <ul class="list">
-                                        <li><a href="#">
-                                                @if(session()->get('language') == 'bangla') {{ $brand->brand_name_bn }} @else {{ $brand->brand_name_en }} @endif
-                                            </a></li>
-                                    </ul>
+                                        <ul class="list">
+                                            <li><a href="#">
+                                                    @if(session()->get('language') == 'bangla') {{ $brand->brand_name_bn }} @else {{ $brand->brand_name_en }} @endif
+                                                </a></li>
+                                        </ul>
                                     @endforeach
                                     <!--<a href="#" class="lnk btn btn-primary">Show Now</a>-->
                                 </div>
@@ -245,46 +245,46 @@
                                 <div class="category-product">
                                     <div class="row">
                                         @foreach($products as $product)
-                                        <div class="col-sm-6 col-md-4 wow fadeInUp">
-                                            <div class="products">
-                                                <div class="product">
-                                                    <div class="product-image">
-                                                        <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a> </div>
-                                                        <!-- /.image -->
+                                            <div class="col-sm-6 col-md-4 wow fadeInUp">
+                                                <div class="products">
+                                                    <div class="product">
+                                                        <div class="product-image">
+                                                            <div class="image"> <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en ) }}"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a> </div>
+                                                            <!-- /.image -->
 
-                                                        <div class="tag new"><span>new</span></div>
-                                                    </div>
-                                                    <!-- /.product-image -->
-
-                                                    <div class="product-info text-left">
-                                                        <h3 class="name"><a href="detail.html">{{ $product->product_name_en }}</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="description"></div>
-                                                        <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
-                                                        <!-- /.product-price -->
-
-                                                    </div>
-                                                    <!-- /.product-info -->
-                                                    <div class="cart clearfix animate-effect">
-                                                        <div class="action">
-                                                            <ul class="list-unstyled">
-                                                                <li class="add-cart-button btn-group">
-                                                                    <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
-                                                                    <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-                                                                </li>
-                                                                <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
-                                                                <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
-                                                            </ul>
+                                                            <div class="tag new"><span>new</span></div>
                                                         </div>
-                                                        <!-- /.action -->
-                                                    </div>
-                                                    <!-- /.cart -->
-                                                </div>
-                                                <!-- /.product -->
+                                                        <!-- /.product-image -->
 
+                                                        <div class="product-info text-left">
+                                                            <h3 class="name"><a href="detail.html">{{ $product->product_name_en }}</a></h3>
+                                                            <div class="rating rateit-small"></div>
+                                                            <div class="description"></div>
+                                                            <div class="product-price"> <span class="price"> $450.99 </span> <span class="price-before-discount">$ 800</span> </div>
+                                                            <!-- /.product-price -->
+
+                                                        </div>
+                                                        <!-- /.product-info -->
+                                                        <div class="cart clearfix animate-effect">
+                                                            <div class="action">
+                                                                <ul class="list-unstyled">
+                                                                    <li class="add-cart-button btn-group">
+                                                                        <button class="btn btn-primary icon" data-toggle="dropdown" type="button"> <i class="fa fa-shopping-cart"></i> </button>
+                                                                        <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                                                    </li>
+                                                                    <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
+                                                                    <li class="lnk"> <a class="add-to-cart" href="detail.html" title="Compare"> <i class="fa fa-signal"></i> </a> </li>
+                                                                </ul>
+                                                            </div>
+                                                            <!-- /.action -->
+                                                        </div>
+                                                        <!-- /.cart -->
+                                                    </div>
+                                                    <!-- /.product -->
+
+                                                </div>
+                                                <!-- /.products -->
                                             </div>
-                                            <!-- /.products -->
-                                        </div>
                                         @endforeach
                                         <!-- /.item -->
 
