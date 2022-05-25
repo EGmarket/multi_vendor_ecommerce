@@ -92,5 +92,24 @@ class IndexController extends Controller
     public function ProductDetails($id){
         $product = Product::findOrFail($id);
         return view('frontend.product.product_details', compact('product'));
+    } /*End Method*/
+
+    public function ProductTags($tag){
+        $products = Product::where('status',1)->where('product_tags_en',$tag)->where('product_tags_bn',$tag)->orderBy('id','DESC')->get();
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+        $allProducts = Product::orderBy('product_name_en','ASC')->get();
+        /*$productColor = Product::where('status',1)->where('product_color_en',$tag)->where(
+            'product_color_en',$tag)->orderBy('id','DESC')->get();*/
+        $brands = Brand::orderBy('brand_name_en','ASC')->get();
+        return view('frontend.body.tags_view',compact('products','categories','brands'));
+    } /*end method*/
+
+    /*Sub category wise data*/
+
+    public function SubCatWiseProduct($subcat_id,$slug){
+        $products = Product::where('status',1)->where('subcategory_id',$subcat_id)->orderBy('id','DESC')->paginate(3);
+        $categories = Category::orderBy('category_name_en','ASC')->get();
+        $brands = Brand::orderBy('brand_name_en','ASC')->get();
+        return view('frontend.product.subcategory_view',compact('products','categories','brands'));
     }
 }

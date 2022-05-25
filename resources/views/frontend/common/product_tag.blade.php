@@ -9,11 +9,11 @@ $tags_bn = \App\Models\Product::groupBy('product_tags_bn')->select('product_tags
         <div class="tag-list">
             @if(session()->get('language') == 'bangla')
                 @foreach($tags_bn as $tag)
-                <a class="item" title="Phone" href="category.html">{{ $tag->product_tags_bn }}</a>
+                <a class="item" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_bn) }}">{{ str_replace(',',' ',$tag->product_tags_bn)  }}</a>
                 @endforeach
             @else
                 @foreach($tags_en as $tag)
-                    <a class="item" title="Phone" href="category.html">{{ $tag->product_tags_en }}</a>
+                    <a class="item" title="Phone" href="{{ url('product/tag/'.$tag->product_tags_en) }}">{{ str_replace(',',' ',$tag->product_tags_en)  }}</a>
                 @endforeach
 
             @endif
