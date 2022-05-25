@@ -91,7 +91,20 @@ class IndexController extends Controller
 
     public function ProductDetails($id){
         $product = Product::findOrFail($id);
-        return view('frontend.product.product_details', compact('product'));
+
+        $color_en = $product->product_color_en;
+        $product_color_en = explode(',',$color_en);
+
+        $color_bn = $product->product_color_bn;
+        $product_color_bn = explode(',',$color_bn);
+
+        $size_en = $product->product_size_en;
+        $product_size_en = explode(',',$size_en);
+
+        $size_bn = $product->product_size_bn;
+        $product_size_bn = explode(',',$size_bn);
+
+        return view('frontend.product.product_details', compact('product','product_color_en','product_color_bn','product_size_en','product_size_bn'));
     } /*End Method*/
 
     public function ProductTags($tag){
