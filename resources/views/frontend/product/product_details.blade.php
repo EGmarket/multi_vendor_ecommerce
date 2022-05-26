@@ -498,7 +498,7 @@
                                                 <select class="form-control unicase-form-control selectpicker">
                                                     <option selected="" disabled="">--Select Color--</option>
                                                     @foreach($product_color_en as $color)
-                                                    <option value="{{ $color }}">{{ $color }}</option>
+                                                    <option value="{{ $color }}">{{ ucwords($color)  }}</option>
                                                     @endforeach
                                                 </select>
                                             </div> {{--end form-group--}}
@@ -510,7 +510,7 @@
                                                 <select class="form-control unicase-form-control selectpicker">
                                                     <option selected="" disabled="">--Select Size--</option>
                                                     @foreach($product_size_en as $size)
-                                                        <option value="{{ $size }}">{{ $size }}</option>
+                                                        <option value="{{ $size }}">{{ ucwords($size) }}</option>
                                                     @endforeach
                                                 </select>
                                             </div> {{--end form group--}}
