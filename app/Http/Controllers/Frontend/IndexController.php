@@ -106,10 +106,10 @@ class IndexController extends Controller
 
         $cat_id = $product->category_id;
         $relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->get();
-        $hot_deals = Product::where('hot_deals',1)->where('discount_price','!=','NULL')->orderBy('id','DESC')->limit(3)->get();
+
 
         return view('frontend.product.product_details', compact('product','product_color_en',
-            'product_color_bn','product_size_en','product_size_bn','relatedProduct','hot_deals'));
+            'product_color_bn','product_size_en','product_size_bn','relatedProduct'));
     } /*End Method*/
 
     public function ProductTags($tag){
