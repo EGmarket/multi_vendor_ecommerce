@@ -104,7 +104,11 @@ class IndexController extends Controller
         $size_bn = $product->product_size_bn;
         $product_size_bn = explode(',',$size_bn);
 
-        return view('frontend.product.product_details', compact('product','product_color_en','product_color_bn','product_size_en','product_size_bn'));
+        $cat_id = $product->category_id;
+        $relatedProduct = Product::where('category_id',$cat_id)->where('id','!=',$id)->orderBy('id','DESC')->get();
+
+        return view('frontend.product.product_details', compact('product','product_color_en',
+            'product_color_bn','product_size_en','product_size_bn','relatedProduct'));
     } /*End Method*/
 
     public function ProductTags($tag){
