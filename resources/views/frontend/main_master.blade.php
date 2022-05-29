@@ -108,7 +108,9 @@
 
                     <div class="col-md-4">
                         <ul class="list-group">
-                            <li class="list-group-item">Product Price: <strong id="price"></strong></li>
+                            <li class="list-group-item">Product Price: <strong class="text-danger">$ <span id="pprice"></span></strong>
+                            <del id="oldprice"></del>
+                            </li>
                             <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
                             <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
                             <li class="list-group-item">Brand: <strong id="pbrand"></strong> </li>
@@ -176,6 +178,14 @@
                 $('#pcategory').text(data.product.category.category_name_en);
                 $('#pbrand').text(data.product.brand.brand_name_en);
                 $('#pimg').attr('src','/'+data.product.product_thumbnail);
+
+                /*Product price*/
+                if(data.product.discount_price == null){
+                    $('#pprice').text(data.product.selling_price)
+                } else {
+                    $('#pprice').text(data.product.discount_price)
+                    $('#oldprice').text(data.product.selling_price)
+                }
 
                 //Color
                 $('select[name="color"]').empty();
