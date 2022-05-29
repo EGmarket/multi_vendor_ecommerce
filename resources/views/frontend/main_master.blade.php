@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="description" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="author" content="">
     <meta name="keywords" content="MediaCenter, Template, eCommerce">
     <meta name="robots" content="all">
@@ -89,7 +90,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -107,11 +108,11 @@
 
                     <div class="col-md-4">
                         <ul class="list-group">
-                            <li class="list-group-item">Product Price:</li>
-                            <li class="list-group-item">Product Code:</li>
-                            <li class="list-group-item">Category:</li>
-                            <li class="list-group-item">Brand:</li>
-                            <li class="list-group-item">Stock:</li>
+                            <li class="list-group-item">Product Price: <strong id="price"></strong></li>
+                            <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
+                            <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
+                            <li class="list-group-item">Brand: <strong id="pbrand"></strong> </li>
+                            <li class="list-group-item">Stock: <strong id="pstock"></strong></li>
                         </ul>
                     </div> {{--end col-md-4--}}
                     <div class="col-md-4">
@@ -155,6 +156,36 @@
     </div>
 </div>
 {{--Modal End--}}
+
+
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    })
+
+    // start Product view with modal
+    function productView(id){
+       /* alert(id)*/
+
+        $.ajax({
+            type: 'GET',
+            url: '/product/view/modal/'+id,
+            dataType:'json',
+            success: function(data){
+                /*console.log(data);*/
+                $('#pname').text(data.product.product_name_en);
+                $('#price').text(data.product.selling_price);
+                $('#pcode').text(data.product.product_code);
+                $('#pstock').text(data.product.product_qty);
+                $('#pcategory').text(data.product.category.category_name_en);
+                $('#pbrand').text(data.product.brand.brand_name_en);
+
+            }
+        })
+    }
+</script>
 
 </body>
 </html>

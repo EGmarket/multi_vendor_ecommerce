@@ -129,12 +129,29 @@ class IndexController extends Controller
         $categories = Category::orderBy('category_name_en','ASC')->get();
         $brands = Brand::orderBy('brand_name_en','ASC')->get();
         return view('frontend.product.subcategory_view',compact('products','categories','brands'));
-    }
+    } /*end function*/
 
     public function SubSubCatWiseProduct($subsubcat_id,$slug){
         $products = Product::where('status',1)->where('subsubcategory_id',$subsubcat_id)->orderBy('id','DESC')->paginate(3);
         $categories = Category::orderBy('category_name_en','ASC')->get();
         $brands = Brand::orderBy('brand_name_en','ASC')->get();
         return view('frontend.product.sub_subcategory_view',compact('products','categories','brands'));
-    }
+    } /*end function*/
+
+    public function ProductViewAjax($id){
+        $product = Product::with('category','brand')->findOrFail($id);
+
+        $color = $product->product_color_en;
+        $product_color_en = explode(',',$color);
+
+        $size = $product->product_size_en;
+        $product_size_en = explode(',',$size);
+
+        return response()->json(array(
+            'product' => $product,
+            'color' => $product_color_en,
+            'size' => $product_size_en
+        ));
+
+    } /*end function*/
 }

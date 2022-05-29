@@ -154,3 +154,6 @@ Route::get('/subcategory/product/{subcat_id}/{slug}',[IndexController::class,'Su
 /*SubSub Categorywise Product*/
 Route::get('/subsubcategory/product/{subsubcat_id}/{slug}',[IndexController::class,'SubSubCatWiseProduct']);
 
+/*Product view Modal*/
+Route::get('/product/view/modal/{id}',[IndexController::class,'ProductViewAjax']);
+
