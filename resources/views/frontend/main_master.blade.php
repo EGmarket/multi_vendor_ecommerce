@@ -102,7 +102,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="..." class="card-img-top" alt="..." style="height: 200px; width: 200px">
+                            <img src="" class="card-img-top" alt="..." style="height: 200px; width: 180px" id="pimg">
                         </div>
                     </div> {{--end col-md-4--}}
 
@@ -116,27 +116,21 @@
                         </ul>
                     </div> {{--end col-md-4--}}
                     <div class="col-md-4">
-                        <div class="form-group">
+                        <div class="form-group" id="colorArea">
                             <label for="exampleFormControlSelect1">color select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+                            <select class="form-control" id="exampleFormControlSelect1" name="color">
+
+
                             </select>
                         </div> {{--end formGroup--}}
-                        <div class="form-group">
+                        <div class="form-group" id="sizeArea">
                             <label for="exampleFormControlSelect1">size select</label>
-                            <select class="form-control" id="exampleFormControlSelect1">
+                            <select class="form-control" id="exampleFormControlSelect1" name="size">
                                 <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
+
                             </select>
                         </div> {{--end formGroup--}}
-                        <div class="form-group">
+                        <div class="form-group" >
                             <label for="exampleFormControlInput1">Quantity</label>
                             <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="1" min="1">
 
@@ -181,6 +175,28 @@
                 $('#pstock').text(data.product.product_qty);
                 $('#pcategory').text(data.product.category.category_name_en);
                 $('#pbrand').text(data.product.brand.brand_name_en);
+                $('#pimg').attr('src','/'+data.product.product_thumbnail);
+
+                //Color
+                $('select[name="color"]').empty();
+                $.each(data.color,function (key,value){
+                    $('select[name="color"]').append('<option value=" '+value+' ">'+value+'</option>')
+                    if(data.color == ""){
+                        $('#colorArea').hide();
+                    }else{
+                        $('#colorArea').show();
+                    }
+                })
+                //Size
+                $('select[name="size"]').empty();
+                $.each(data.size,function (key,value){
+                    $('select[name="size"]').append('<option value=" '+value+' ">'+value+'</option>')
+                    if(data.size == ""){
+                        $('#sizeArea').hide();
+                    }else{
+                        $('#sizeArea').show();
+                    }
+                })
 
             }
         })
