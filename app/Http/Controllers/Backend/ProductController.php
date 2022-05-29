@@ -67,12 +67,13 @@ class ProductController extends Controller
             $make_name = hexdec(uniqid()).'.'.$multiImg->getClientOriginalExtension();
             Image::make($multiImg)->resize(917,1000)->save('upload/product/multi_img/'.$make_name);
             $uploadPath = 'upload/product/multi_img/'.$make_name;
-        }
+
         MultiImg::insert([
             'product_id'=>$product_id,
             'photo_name'=>$uploadPath,
             'created_at' => Carbon::now(),
         ]);
+        }
         $notification = array(
             'message' => 'Multi Image inserted Successfully done',
             'alert-type' => 'success'
