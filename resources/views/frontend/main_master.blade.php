@@ -114,7 +114,8 @@
                             <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
                             <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
                             <li class="list-group-item">Brand: <strong id="pbrand"></strong> </li>
-                            <li class="list-group-item">Stock: <strong id="pstock"></strong></li>
+                            <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="available" style="background: green; color: white;"></span>
+                                <span class="badge badge-pill badge-danger" id="stockout" style="background: red; color: white;"></span> </strong></li>
                         </ul>
                     </div> {{--end col-md-4--}}
                     <div class="col-md-4">
@@ -174,18 +175,30 @@
                 $('#pname').text(data.product.product_name_en);
                 $('#price').text(data.product.selling_price);
                 $('#pcode').text(data.product.product_code);
-                $('#pstock').text(data.product.product_qty);
+
                 $('#pcategory').text(data.product.category.category_name_en);
                 $('#pbrand').text(data.product.brand.brand_name_en);
                 $('#pimg').attr('src','/'+data.product.product_thumbnail);
 
                 /*Product price*/
                 if(data.product.discount_price == null){
-                    $('#pprice').text(data.product.selling_price)
+                    $('#pprice').text('');
+                    $('#oldprice').text('');
+                    $('#pprice').text(data.product.selling_price);
                 } else {
                     $('#pprice').text(data.product.discount_price)
                     $('#oldprice').text(data.product.selling_price)
                 }
+
+                if (data.product.product_qty > 0) {
+                    $('#available').text('');
+                    $('#stockout').text('');
+                    $('#available').text('available');
+                }else{
+                    $('#available').text('');
+                    $('#stockout').text('');
+                    $('#stockout').text('stockout');
+                } // end Stock Option
 
                 //Color
                 $('select[name="color"]').empty();
@@ -207,6 +220,7 @@
                         $('#sizeArea').show();
                     }
                 })
+
 
             }
         })
