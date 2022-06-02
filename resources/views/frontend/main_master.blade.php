@@ -61,6 +61,7 @@
 <script src="{{ asset('frontend/assets/js/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script>
@@ -91,7 +92,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel"><span id="pname"></span></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -120,25 +121,27 @@
                     </div> {{--end col-md-4--}}
                     <div class="col-md-4">
                         <div class="form-group" id="colorArea">
-                            <label for="exampleFormControlSelect1">color select</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="color">
+                            <label for="color">color select</label>
+                            <select class="form-control" id="color" name="color">
 
 
                             </select>
                         </div> {{--end formGroup--}}
                         <div class="form-group" id="sizeArea">
-                            <label for="exampleFormControlSelect1">size select</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="size">
+                            <label for="size">size select</label>
+                            <select class="form-control" id="size" name="size">
                                 <option>1</option>
 
                             </select>
                         </div> {{--end formGroup--}}
                         <div class="form-group" >
-                            <label for="exampleFormControlInput1">Quantity</label>
-                            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="1" min="1">
+                            <label for="qty">Quantity</label>
+                            <input type="number" class="form-control" id="qty" placeholder="1" min="1">
 
                         </div> {{--end formGroup--}}
-                        <button type="submit" class="btn btn-primary mb-2">Add to cart</button>
+
+                        <input type="hidden" id="product_id">
+                        <button type="submit" class="btn btn-primary mb-2" onclick="addTocart()" >Add to cart</button>
                     </div> {{--end col-md-4--}}
                 </div> {{--end Row--}}
 
@@ -179,6 +182,8 @@
                 $('#pcategory').text(data.product.category.category_name_en);
                 $('#pbrand').text(data.product.brand.brand_name_en);
                 $('#pimg').attr('src','/'+data.product.product_thumbnail);
+                $('#product_id').val(id);
+                $('#qty').val(1);
 
                 /*Product price*/
                 if(data.product.discount_price == null){
@@ -224,7 +229,53 @@
 
             }
         })
+    } // end Product view with modal
+
+    // start addToCart product
+    function addTocart(){
+        let product_name = $('#pname').text();
+        let id = $('#product_id').val();
+        let qty = $('#qty').val();
+        let color = $('#color option:selected').text();
+        let size = $('#size option:selected').text();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data:{
+                product_name:product_name,
+                color:color, size:size, qty:qty
+            },
+            url: "/cart/data/store/"+id,
+            success:function (data){
+                $('#closeModal').click();
+                // console.log(data)
+
+                /*Start message*/
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)){
+                    Toast.fire({
+                        type: 'success',
+                        title: data.success
+                    })
+                } else {
+                    Toast.fire({
+                        type: 'success',
+                        title: data.error
+                    })
+                }
+            }
+        })
     }
+
+
+
+    // end addToCart product
 </script>
 
 </body>
