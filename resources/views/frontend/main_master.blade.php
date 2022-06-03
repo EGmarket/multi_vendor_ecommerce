@@ -136,7 +136,7 @@
                         </div> {{--end formGroup--}}
                         <div class="form-group" >
                             <label for="qty">Quantity</label>
-                            <input type="number" class="form-control" id="qty" placeholder="1" min="1">
+                            <input type="number" class="form-control" id="qty" value="1" min="1">
 
                         </div> {{--end formGroup--}}
 
@@ -276,6 +276,20 @@
 
 
     // end addToCart product
+</script>
+
+<script type="text/javascript">
+    function miniCart(){
+        $.ajax({
+            type: 'GET',
+            url: '/product/mini/cart',
+            dataType: 'json',
+            success:function (response){
+                console.log(response)
+            }
+        })
+    }
+
 </script>
 
 </body>

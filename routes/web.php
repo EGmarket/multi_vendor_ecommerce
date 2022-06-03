@@ -161,3 +161,6 @@ Route::get('/product/view/modal/{id}',[IndexController::class,'ProductViewAjax']
 /*Add to Cart */
 Route::post('/cart/data/store/{id}',[CartController::class,'AddToCart']);
 
+/*Mini Cart*/
+Route::get('/product/mini/cart/',[CartController::class,'AddMiniCart']);
+
