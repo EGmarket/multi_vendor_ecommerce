@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Auth;
 
 class CartController extends Controller
 {
@@ -69,5 +70,14 @@ class CartController extends Controller
         return response()->json(['success' => 'Product Remove from Cart']);
 
     } // end mehtod
+
+    public function AddToWishlist(Request $request, $product_id){
+        if (Auth::check()){
+
+        }else{
+            return response()->json(['error' => 'Please login first to your account']);
+        }
+
+    } // end method
 
 }

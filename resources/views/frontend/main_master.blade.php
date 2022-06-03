@@ -270,6 +270,7 @@
                         title: data.error
                     })
                 }
+                //end Message
             }
         })
     }
@@ -352,6 +353,45 @@
 
     } /*end miniCart section Method*/
 </script>
+{{--// end addToCart product en --}}
+
+{{--Start add wishlist page--}}
+<script type="text/javascript">
+    function addToWishList(product_id){
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: "/add-to-wishlist/"+product_id,
+            success:function (data){
+
+                /*Start message*/
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)){
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                } else {
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                //end Message
+
+            }
+        })
+    }
+</script>
+{{--End add wishlist page--}}
 
 </body>
 </html>
