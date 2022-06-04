@@ -403,19 +403,22 @@
             success:function (response){
                 // console.log(response)
                 let rows = ""
-                $.each(response.carts, function (key,value) {
+                $.each(response, function (key,value) {
                     rows += `<tr>
-                                    <td class="col-md-2"><img src="assets/images/products/p1.jpg" alt="imga"></td>
+                                    <td class="col-md-2"><img src="/${value.product.product_thumbnail}" alt="imga"></td>
                                     <td class="col-md-7">
-                                        <div class="product-name"><a href="#">Floral Print Buttoned</a></div>
+                                        <div class="product-name"><a href="#">${value.product.product_name_en}</a></div>
 
                                         <div class="price">
-                                            $400.00
-                                            <span>$900.00</span>
+                                           ${value.product.discount_price == null
+                                          ? `${value.product.selling_price}`
+                                          :
+                                          `${value.product.discount_price} <span>${value.product.selling_price}</span>`
+                                           }
                                         </div>
                                     </td>
                                     <td class="col-md-2">
-                                        <a href="#" class="btn-upper btn btn-primary">Add to cart</a>
+                                        <button class="btn btn-primary icon" type="button" title="Add Cart" data-toggle="modal" data-target="#exampleModal" id="${value.product_id}" onclick="productView(this.id)"> Add to Cart </button>
                                     </td>
                                     <td class="col-md-1 close-btn">
                                         <a href="#" class=""><i class="fa fa-times"></i></a>
