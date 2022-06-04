@@ -15,7 +15,7 @@
 
 
 @auth
-    <li><a href=" {{ route('logout')  }}"><i class="icon fa fa-user"></i>User</a></li>
+    <li><a href=" {{ route('login')  }}"><i class="icon fa fa-user"></i>User</a></li>
 @else
     <li><a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a></li>
 @endauth
