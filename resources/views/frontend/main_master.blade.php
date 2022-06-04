@@ -393,5 +393,46 @@
 </script>
 {{--End add wishlist page--}}
 
+{{--Load wishlist data started--}}
+<script type="text/javascript">
+    function wishlist(){
+        $.ajax({
+            type: 'GET',
+            url: '/get-wishlist-product',
+            dataType: 'json',
+            success:function (response){
+                // console.log(response)
+                let rows = ""
+                $.each(response.carts, function (key,value) {
+                    rows += `<tr>
+                                    <td class="col-md-2"><img src="assets/images/products/p1.jpg" alt="imga"></td>
+                                    <td class="col-md-7">
+                                        <div class="product-name"><a href="#">Floral Print Buttoned</a></div>
+
+                                        <div class="price">
+                                            $400.00
+                                            <span>$900.00</span>
+                                        </div>
+                                    </td>
+                                    <td class="col-md-2">
+                                        <a href="#" class="btn-upper btn btn-primary">Add to cart</a>
+                                    </td>
+                                    <td class="col-md-1 close-btn">
+                                        <a href="#" class=""><i class="fa fa-times"></i></a>
+                                    </td>
+                                </tr>`
+
+                });
+
+                $('#wishlist').html(rows);
+
+            }
+        })
+    }
+    wishlist()
+</script>
+
+{{--Load wishlist data ended--}}
+
 </body>
 </html>
