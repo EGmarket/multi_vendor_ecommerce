@@ -473,5 +473,80 @@
 
 {{--Load wishlist data ended--}}
 
+{{-------------------------------------------------------------------------}}
+{{--Load myCartPage data started--}}
+<script type="text/javascript">
+    function cart(){
+        $.ajax({
+            type: 'GET',
+            url: '/user/get-cart-product',
+            dataType: 'json',
+            success:function (response){
+                // console.log(response)
+                let rows = ""
+                $.each(response.carts, function (key,value) {
+                    rows += `<tr>
+                                    <td class="col-md-2"><img src="/${value.options.img}" alt="imga"></td>
+                                    <td class="col-md-7">
+                                        <div class="product-name"><a href="#">${value.name}</a></div>
+
+                                        <div class="price">
+                                        ${value.price} * ${value.qty}
+                                        </div>
+                                    </td>
+
+                                    <td class="col-md-1 close-btn">
+                                        <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>`
+
+                });
+
+                $('#cartPage').html(rows);
+
+            }
+        })
+    }
+    cart();
+
+    /*myCartPage Remove section Method Started*/
+    function wishlistRemove(id){
+        $.ajax({
+            type: 'GET',
+            url: '/user/wishlist-remove/'+id,
+            dataType: 'json',
+            success: function (data){
+                wishlist() /*for stopping loading the page*/
+
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
+            }
+        })
+
+    } /*end myCartPage Remove section Method*/
+
+</script>
+
+{{--Load myCartPage data ended--}}
+
 </body>
 </html>
