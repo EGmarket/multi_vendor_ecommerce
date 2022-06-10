@@ -326,7 +326,9 @@
             url: '/minicart/product-remove/'+rowId,
             dataType: 'json',
             success: function (data){
-                miniCart()
+                miniCart();
+                wishlist();
+                cart();
 
                 // Start Message
                 const Toast = Swal.mixin({
@@ -538,7 +540,9 @@
             url: '/user/cart-remove/'+id,
             dataType: 'json',
             success: function (data){
-                cart() /*for stopping loading the page*/
+                wishlist();
+                cart(); /*for stopping loading the page*/
+                miniCart();
 
                 // Start Message
                 const Toast = Swal.mixin({
