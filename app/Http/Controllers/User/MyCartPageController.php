@@ -29,4 +29,11 @@ class MyCartPageController extends Controller
         Cart::remove($rowId);
         return response()->json(['success' => 'Successfully Remove From Cart']);
     }/*end method*/
+
+    public function CartIncrement($rowId){
+        $row = Cart::get($rowId); /*according to bumbum99 package*/
+        Cart::update($rowId, $row->qty + 1);
+        return response()->json('increment');
+
+    } /*end method*/
 }
