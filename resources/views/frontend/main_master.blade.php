@@ -486,7 +486,7 @@
                 let rows = ""
                 $.each(response.carts, function (key,value) {
                     rows += `<tr>
-                                    <td class="col-md-2"><img src="/${value.options.img}" alt="imga"></td>
+                                    <td class="col-md-2"><img src="/${value.options.img}" alt="imga"  style="width:60px; height:60px;"></td>
                                     <td class="col-md-7">
                                         <div class="product-name"><a href="#">${value.name}</a></div>
 
@@ -495,9 +495,31 @@
                                         </div>
                                     </td>
 
-                                    <td class="col-md-1 close-btn">
-                                        <button type="submit" class="" id="${value.id}" onclick="wishlistRemove(this.id)"><i class="fa fa-times"></i></button>
+                                    <td class="col-md-2">
+                                    <strong>${value.options.color}</strong>
                                     </td>
+                                   <td class="col-md-2">
+                             ${value.options.size == null
+                                 ? `<span> .... </span>`
+                                 :
+                           `<strong>${value.options.size} </strong>`
+                           }
+                           </td>
+
+
+                      <td class="col-md-2">
+                    <button type="submit" class="btn btn-success btn-sm " style="width:35px;" >+</button>
+                    <input  type="text" value="${value.qty}" min="1" max="100" disabled="" style="width:35px;" >
+                    <button type="submit" class="btn btn-danger btn-sm" style="width:35px;">-</button>
+                 </td>
+             <td class="col-md-2">
+            <strong>$ ${value.subtotal} </strong>
+            </td>
+
+            <td class="col-md-1 close-btn">
+            <button type="submit" class="" id="${value.rowId}" onclick="cartRemove(this.id)"><i class="fa fa-times"></i></button>
+            </td>
+
                                 </tr>`
 
                 });
@@ -510,13 +532,13 @@
     cart();
 
     /*myCartPage Remove section Method Started*/
-    function wishlistRemove(id){
+    function cartRemove(id){
         $.ajax({
             type: 'GET',
-            url: '/user/wishlist-remove/'+id,
+            url: '/user/cart-remove/'+id,
             dataType: 'json',
             success: function (data){
-                wishlist() /*for stopping loading the page*/
+                cart() /*for stopping loading the page*/
 
                 // Start Message
                 const Toast = Swal.mixin({
