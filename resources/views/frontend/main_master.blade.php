@@ -511,7 +511,10 @@
 
                       <td class="col-md-2">
 
-        <button type="submit" class="btn btn-danger btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)" >-</button>
+                 ${value.qty > 1
+                        ? `<button type="submit" class="btn btn-danger btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)" >-</button> `
+                        : `<button type="submit" class="btn btn-danger btn-sm" disabled >-</button> `
+                    }
         <input type="text" value="${value.qty}" min="1" max="100" disabled="" style="width:25px;" >
          <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartIncrement(this.id)" >+</button>
                  </td>
@@ -585,6 +588,19 @@
     }
 
     /*----------- Cart Increment End ---------------*/
+    // -------- CART Decrement  --------//
+    function cartDecrement(rowId){
+        $.ajax({
+            type:'GET',
+            url: "/cart-decrement/"+rowId,
+            dataType:'json',
+            success:function(data){
+                cart();
+                miniCart();
+            }
+        });
+    }
+    // ---------- END CART Decrement -----///
 
 </script>
 

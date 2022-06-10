@@ -188,4 +188,5 @@ Route::get('/mycart', [MyCartPageController::class, 'MyCart'])->name('mycart');
 Route::get('/user/get-cart-product', [MyCartPageController::class, 'GetCartProduct']);
 Route::get('/user/cart-remove/{rowId}', [MyCartPageController::class, 'RemoveCartProduct']);
 Route::get('/cart-increment/{rowId}', [MyCartPageController::class, 'CartIncrement']);
+Route::get('/cart-decrement/{rowId}', [MyCartPageController::class, 'CartDecrement']);
 
