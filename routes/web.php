@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\backend\CouponController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -189,4 +190,11 @@ Route::get('/user/get-cart-product', [MyCartPageController::class, 'GetCartProdu
 Route::get('/user/cart-remove/{rowId}', [MyCartPageController::class, 'RemoveCartProduct']);
 Route::get('/cart-increment/{rowId}', [MyCartPageController::class, 'CartIncrement']);
 Route::get('/cart-decrement/{rowId}', [MyCartPageController::class, 'CartDecrement']);
+
+
+/*--------------------------- Admin all coupon route section -------------------------*/
+
+Route::prefix('coupons')->group(function (){
+    Route::get('/view',[CouponController::class,'CouponView'])->name('coupon-manage');
+});
 

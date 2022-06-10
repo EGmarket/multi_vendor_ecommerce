@@ -81,9 +81,27 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li> class="{{ ($route == 'slider-manage')? 'active':'' }}" <a href="{{ route('slider-manage') }}"><i class="ti-more"></i>Manage Slider</a></li>
+                    <li class="{{ ($route == 'slider-manage')? 'active':'' }}"> <a href="{{ route('slider-manage') }}"><i class="ti-more"></i>Manage Slider</a></li>
                 </ul>
             </li>
+
+            {{----------------Coupon Section Start ----------}}
+
+            {{--Slider Option--}}
+            <li class="treeview {{ ($prefix == '/coupons')?'active':'' }} ">
+                <a href="#">
+                    <i data-feather="message-circle"></i>
+                    <span>Coupons</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{ ($route == 'coupon-manage')? 'active':'' }}">  <a href="{{ route('coupon-manage') }}"><i class="ti-more"></i>Manage Slider</a></li>
+                </ul>
+            </li>
+
+            {{----------------Coupon Section End ----------}}
 
             <li class="treeview">
                 <a href="#">
