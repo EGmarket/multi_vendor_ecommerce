@@ -208,6 +208,7 @@ Route::prefix('coupons')->group(function (){
 Route::prefix('shipping')->group(function (){
     Route::get('/division/view',[ShippingAreaController::class,'DivisionView'])->name('division-manage');
     Route::post('/division/store', [ShippingAreaController::class, 'DivisionStore'])->name('division.store');
+    Route::get('/division/edit/{id}', [ShippingAreaController::class, 'DivisionEdit'])->name('division.edit');
 
 });
 

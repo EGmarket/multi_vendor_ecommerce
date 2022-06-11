@@ -29,4 +29,9 @@ class ShippingAreaController extends Controller
 
         return redirect()->back()->with($notification);
     } /*end method*/
+
+    public function DivisionEdit($id){
+        $divisions = ShipDivision::findOrFail($id);
+        return view('backend.ship.division.edit_division', compact('divisions'));
+    }
 }
