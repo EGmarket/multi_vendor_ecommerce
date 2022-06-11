@@ -117,7 +117,7 @@
                                     <div class="form-group">
                                         <h5>Coupon Validity Date  <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="date" name="coupon_validity" class="form-control" >
+                                            <input type="date" name="coupon_validity" class="form-control" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                                             @error('coupon_validity')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
