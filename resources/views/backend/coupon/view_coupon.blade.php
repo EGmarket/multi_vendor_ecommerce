@@ -39,7 +39,8 @@
                                         <tr>
                                             <td> {{ $item->coupon_name }}  </td>
                                             <td> {{ $item->coupon_discount }}% </td>
-                                            <td> {{ $item->coupon_validity }}</td>
+                                            <td width="25%">
+                                            </td>
 
                                             <td>
                                                 @if($item->status == 1)
@@ -86,7 +87,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('category.store') }}" >
+                                <form method="post" action="{{ route('coupon.store') }}" >
                                     @csrf
 
 
