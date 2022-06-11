@@ -35,7 +35,7 @@
                                     <tbody>
                                     @foreach($district as $item)
                                         <tr>
-                                            <td> {{ $item->division_id }}  </td>
+                                            <td> {{ $item->division->division_name }}  </td>
                                             <td> {{ $item->district_name }}  </td>
 
                                             <td width="40%">
