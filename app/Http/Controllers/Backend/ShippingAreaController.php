@@ -66,4 +66,25 @@ class ShippingAreaController extends Controller
         $district = ShipDistrict::with('division')->orderBy('id','DESC')->get();
         return view('backend.ship.district.view_district', compact('district','division'));
     } /*end method*/
+
+    public function DistrictStore(Request $request){
+        $request->validate([
+            'division_id' => 'required',
+            'district_name' => 'required',
+        ]);
+        ShipDistrict::insert([
+
+            'division_id' => $request->division_id,
+            'district_name' => $request->district_name,
+            'created_at' => Carbon::now(),
+
+        ]);
+
+        $notification = array(
+            'message' => 'District Inserted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    } /*end method*/
 }
