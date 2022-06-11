@@ -29,7 +29,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('coupon.update',$divisions->id) }}" >
+                                <form method="post" action="{{ route('division.update',$divisions->id) }}" >
                                     @csrf
 
 
