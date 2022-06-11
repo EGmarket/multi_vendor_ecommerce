@@ -115,6 +115,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{ ($route == 'division-manage')? 'active':'' }}">  <a href="{{ route('division-manage') }}"><i class="ti-more"></i>Manage Division</a></li>
+                    <li class="{{ ($route == 'district-manage')? 'active':'' }}">  <a href="{{ route('district-manage') }}"><i class="ti-more"></i>Manage District</a></li>
                 </ul>
             </li>
 
