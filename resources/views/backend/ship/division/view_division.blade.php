@@ -26,10 +26,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Coupon Name </th>
-                                        <th>Coupon Discount</th>
-                                        <th>Validity </th>
-                                        <th>Status </th>
+                                        <th>Division Name </th>
                                         <th>Action</th>
 
                                     </tr>
@@ -37,22 +34,10 @@
                                     <tbody>
                                     @foreach($divisions as $item)
                                         <tr>
-                                            <td> {{ $item->coupon_name }}  </td>
-                                            <td> {{ $item->coupon_discount }}% </td>
-                                            <td width="25%">
-                                                {{ Carbon\Carbon::parse($item->coupon_validity)->format('D, d F Y') }}
-                                            </td>
+                                            <td> {{ $item->division_name  }}  </td>
 
-                                            <td>
-                                                @if($item->coupon_validity >= Carbon\Carbon::now()->format('Y-m-d'))
-                                                    <span class="badge badge-pill badge-success"> Valid </span>
-                                                @else
-                                                    <span class="badge badge-pill badge-danger"> Invalid </span>
-                                                @endif
 
-                                            </td>
-
-                                            <td width="25%">
+                                            <td width="40%">
                                                 <a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                                 <a href="{{ route('coupon.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>
@@ -74,55 +59,35 @@
                 <!-- /.col -->
 
 
-                <!--   ------------ Add Category Page -------- -->
+                <!--   ------------ Add Division area Page -------- -->
 
 
                 <div class="col-4">
 
                     <div class="box">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Add Coupon </h3>
+                            <h3 class="box-title">Add Division </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('coupon.store') }}" >
+                                <form method="post" action="{{ route('division.store') }}" >
                                     @csrf
 
 
                                     <div class="form-group">
-                                        <h5>Coupon Name  <span class="text-danger">*</span></h5>
+                                        <h5>Division Name  <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="text"  name="coupon_name" class="form-control" >
-                                            @error('coupon_name')
+                                            <input type="text"  name="division_name" class="form-control" >
+                                            @error('division_name')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
                                     </div>
 
 
-                                    <div class="form-group">
-                                        <h5>Coupon Discount(%) <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="text" name="coupon_discount" class="form-control" >
-                                            @error('coupon_discount')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <h5>Coupon Validity Date  <span class="text-danger">*</span></h5>
-                                        <div class="controls">
-                                            <input type="date" name="coupon_validity" class="form-control" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
-                                            @error('coupon_validity')
-                                            <span class="text-danger">{{ $message }}</span>
-                                            @enderror
-                                        </div>
-                                    </div>
 
 
                                     <div class="text-xs-right">
