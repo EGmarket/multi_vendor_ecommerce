@@ -120,4 +120,10 @@ class ShippingAreaController extends Controller
         return redirect()->back()->with($notification);
     }
 
+    /*----------------------State Area Function --------------------*/
+    public function StateView(){
+
+    }
+    /*---------------------- End State Area Function --------------------*/
+
 }

@@ -219,6 +219,12 @@ Route::prefix('shipping')->group(function (){
     Route::get('/district/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');
     Route::post('/district/update/{id}', [ShippingAreaController::class, 'DistrictUpdate'])->name('district.update');
     Route::get('/district/delete/{id}', [ShippingAreaController::class, 'DistrictDelete'])->name('district.delete');
+    /*-------------------------------------- END District Area Route -------------------------------------------*/
 
+    /*----------------------------------- State Area Route -------------------------------------*/
+    Route::get('/state/view',[ShippingAreaController::class,'StateView'])->name('state-manage');
+
+
+    /*-------------------------------------- END District Area Route -------------------------------------------*/
 });
 
