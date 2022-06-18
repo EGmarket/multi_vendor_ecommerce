@@ -92,5 +92,21 @@ class ShippingAreaController extends Controller
         $divisions = ShipDivision::orderBy('division_name','ASC')->get();
         $districts = ShipDistrict::findOrFail($id);
         return view('backend.ship.district.edit_district', compact('divisions','districts'));
+    } /*end method*/
+
+    public function DistrictUpdate(Request $request,$id){
+        ShipDistrict::findOrFail($id)->update([
+
+            'division_id' => $request->division_id,
+            'district_name' => $request->district_name,
+            'created_at' => Carbon::now(),
+        ]);
+        $notification = array(
+            'message' => 'District Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('district-manage')->with($notification);
     }
+
 }
