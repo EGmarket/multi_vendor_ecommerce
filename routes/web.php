@@ -223,6 +223,8 @@ Route::prefix('shipping')->group(function (){
 
     /*----------------------------------- State Area Route -------------------------------------*/
     Route::get('/state/view',[ShippingAreaController::class,'StateView'])->name('state-manage');
+    Route::post('/state/store', [ShippingAreaController::class, 'StateStore'])->name('state.store');
+    Route::get('/state/edit/{id}',[ShippingAreaController::class,'StateEdit'])->name('state.edit');
 
 
     /*-------------------------------------- END District Area Route -------------------------------------------*/

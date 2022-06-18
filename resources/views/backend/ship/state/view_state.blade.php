@@ -41,7 +41,7 @@
                                             <td> {{ $item->state_name }}  </td>
 
                                             <td width="40%">
-                                                <a href="{{ route('district.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                                <a href="{{ route('state.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                                 <a href="{{ route('district.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>
                                             </td>
@@ -76,7 +76,7 @@
                             <div class="table-responsive">
 
 
-                                <form method="post" action="{{ route('district.store') }}" >
+                                <form method="post" action="{{ route('state.store') }}" >
                                     @csrf
 
 
@@ -119,7 +119,7 @@
                                         <h5>State Name  <span class="text-danger">*</span></h5>
                                         <div class="controls">
                                             <input type="text"  name="state_name" class="form-control" >
-                                            @error('state_name	')
+                                            @error('state_name')
                                             <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
