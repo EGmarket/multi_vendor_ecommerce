@@ -225,6 +225,7 @@ Route::prefix('shipping')->group(function (){
     Route::get('/state/view',[ShippingAreaController::class,'StateView'])->name('state-manage');
     Route::post('/state/store', [ShippingAreaController::class, 'StateStore'])->name('state.store');
     Route::get('/state/edit/{id}',[ShippingAreaController::class,'StateEdit'])->name('state.edit');
+    Route::post('/state/update/{id}', [ShippingAreaController::class, 'StateUpdate'])->name('state.update');
 
 
     /*-------------------------------------- END District Area Route -------------------------------------------*/

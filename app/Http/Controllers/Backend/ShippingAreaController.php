@@ -158,6 +158,22 @@ class ShippingAreaController extends Controller
         $state = ShipState::findOrFail($id);
         return view('backend.ship.state.edit_state', compact('division','district','state'));
     }/*end method*/
+
+    public function StateUpdate(Request $request,$id){
+        ShipState::findOrFail($id)->update([
+
+            'division_id' => $request->division_id,
+            'district_id' => $request->district_id,
+            'state_name' => $request->state_name,
+            'created_at' => Carbon::now(),
+        ]);
+        $notification = array(
+            'message' => 'District Updated Successfully',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('state-manage')->with($notification);
+    } /*end method*/
     /*---------------------- End State Area Function --------------------*/
 
 }
