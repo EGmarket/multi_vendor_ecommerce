@@ -39,7 +39,7 @@
                                             <td> {{ $item->district_name }}  </td>
 
                                             <td width="40%">
-                                                <a href="{{ route('division.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
+                                                <a href="{{ route('district.edit',$item->id) }}" class="btn btn-info" title="Edit Data"><i class="fa fa-pencil"></i> </a>
                                                 <a href="{{ route('division.delete',$item->id) }}" class="btn btn-danger" title="Delete Data" id="delete">
                                                     <i class="fa fa-trash"></i></a>
                                             </td>

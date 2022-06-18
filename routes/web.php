@@ -216,6 +216,8 @@ Route::prefix('shipping')->group(function (){
     /*----------------------------------- District Area Route -------------------------------------*/
     Route::get('/district/view',[ShippingAreaController::class,'DistrictView'])->name('district-manage');
     Route::post('/district/store', [ShippingAreaController::class, 'DistrictStore'])->name('district.store');
+    Route::get('/district/edit/{id}', [ShippingAreaController::class, 'DistrictEdit'])->name('district.edit');
+
 
 });
 
