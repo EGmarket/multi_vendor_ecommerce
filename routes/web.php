@@ -232,3 +232,7 @@ Route::prefix('shipping')->group(function (){
     /*-------------------------------------- END District Area Route -------------------------------------------*/
 });
 
+/*---------------------- Frontend Coupon Option ------------------------*/
+
+Route::post('/coupon-apply', [CartController::class, 'CouponApply']);
+
