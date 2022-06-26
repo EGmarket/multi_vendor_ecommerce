@@ -606,5 +606,24 @@
 
 {{--Load myCartPage data ended--}}
 
+ {{------------------------------ Coupon Apply started -----------------------}}
+
+<script type="text/javascript">
+    function applyCoupon(){
+        let coupon_name = $('#coupon_name').val();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            data: {coupon_name:coupon_name},
+            url: "{{ url('/coupon-apply') }}",
+            success: function (data){
+
+            }
+        })
+    }
+</script>
+
+ {{------------------------------ Coupon Apply ended --------------------------}}
+
 </body>
 </html>
