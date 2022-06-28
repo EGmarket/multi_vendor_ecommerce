@@ -699,6 +699,7 @@
             url: "{{ url('/coupon-remove') }}",
             dataType: 'json',
             success:function (data){
+                couponCalculation()
                 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
