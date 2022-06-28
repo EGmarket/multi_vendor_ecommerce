@@ -617,6 +617,7 @@
             data: {coupon_name:coupon_name},
             url: "{{ url('/coupon-apply') }}",
             success:function(data){
+                couponCalculation()
 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
