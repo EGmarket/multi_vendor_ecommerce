@@ -20,7 +20,7 @@
                 <div class="shopping-cart">
                     <div class="shopping-cart-table ">
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table" >
                                 <thead>
                                 <tr>
 
@@ -46,7 +46,7 @@
                         <div class="col-md-4 mt-5 col-sm-12 estimate-ship-tax">
                             @if(Session::has('coupon'))
                                 @else
-                            <table class="table">
+                            <table class="table" id="couponField">
                                 <thead>
                                 <tr>
                                     <th>

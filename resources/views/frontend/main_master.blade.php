@@ -617,7 +617,8 @@
             data: {coupon_name:coupon_name},
             url: "{{ url('/coupon-apply') }}",
             success:function(data){
-                couponCalculation()
+                couponCalculation();
+                $('#couponField').hide();
 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
@@ -700,7 +701,8 @@
             url: "{{ url('/coupon-remove') }}",
             dataType: 'json',
             success:function (data){
-                couponCalculation()
+                couponCalculation();
+                $('#couponField').show();
                 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
