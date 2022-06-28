@@ -77,14 +77,14 @@
 
                         <div class="col-md-4 col-sm-12 cart-shopping-total">
                             <table class="table">
-                                <thead>
+                                <thead id="couponCalField">
                                 <tr>
                                     <th>
                                         <div class="cart-sub-total">
-                                            Subtotal<span class="inner-left-md">$600.00</span>
+                                            Subtotal<span class="inner-left-md"></span>
                                         </div>
                                         <div class="cart-grand-total">
-                                            Grand Total<span class="inner-left-md">$600.00</span>
+                                            Grand Total<span class="inner-left-md"></span>
                                         </div>
                                     </th>
                                 </tr>
