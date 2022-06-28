@@ -671,6 +671,7 @@
                                         </div>
                                         <div class="cart-sub-total">
                                             Coupon<span class="inner-left-md">${data.coupon_name}</span>
+                                            <button type="submit" onclick="couponRemove()"><i class="fa fa-times"></i>  </button>
                                         </div>
                                         <div class="cart-sub-total">
                                             Discount Amount<span class="inner-left-md">$ ${data.discount_amount}</span>
@@ -689,6 +690,45 @@
 </script>
 
  {{------------------------------ Coupon Apply ended --------------------------}}
+
+ {{------------------------------ Coupon Remove Started --------------------------}}
+<script type="text/javascript">
+    function couponRemove(){
+        $.ajax({
+            type:'GET',
+            url: "{{ url('/coupon-remove') }}",
+            dataType: 'json',
+            success:function (data){
+                // Start Message
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+
+                    showConfirmButton: false,
+                    timer: 3000
+                })
+                if ($.isEmptyObject(data.error)) {
+                    Toast.fire({
+                        type: 'success',
+                        icon: 'success',
+                        title: data.success
+                    })
+                }else{
+                    Toast.fire({
+                        type: 'error',
+                        icon: 'error',
+                        title: data.error
+                    })
+                }
+                // End Message
+            }
+        })
+    }
+</script>
+
+ {{------------------------------ Coupon Remove ENDED --------------------------}}
+
+
 
 </body>
 </html>
