@@ -703,6 +703,7 @@
             success:function (data){
                 couponCalculation();
                 $('#couponField').show();
+                $('#coupon_name').val('');
                 // Start Message
                 const Toast = Swal.mixin({
                     toast: true,
